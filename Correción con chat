@@ -1,0 +1,97 @@
+#include <iostream>
+using namespace std;
+
+class Producto {
+private:
+    std::string Descripcion;
+    int CodigoProducto;
+    int ExistenciasMes;
+    int Entradas;
+    int Salidas;
+
+public:
+    // Atributos de la clase producto
+    Producto() : CodigoProducto(0), ExistenciasMes(0), Entradas(0), Salidas(0) {
+        Descripcion = "";
+    }
+
+    void setDescripcion(const std::string& nombre) {
+        Descripcion = nombre;
+    }
+
+    void setCodigoProducto(int codigo) {
+        CodigoProducto = codigo;
+    }
+
+    void setEntradas(int entradas) {
+        Entradas = entradas;
+    }
+
+    void setExistenciasMes(int existencias) {
+        ExistenciasMes = existencias;
+    }
+
+    void setSalidas(int salida) {
+        Salidas = salida;
+    }
+
+    // Métodos accesores
+    std::string getDescripcion() const {
+        return Descripcion;
+    }
+
+    int getCodigoProducto() const {
+        return CodigoProducto;
+    }
+
+    int getExistenciasMes() const {
+        return ExistenciasMes;
+    }
+
+    int getEntradas() const {
+        return Entradas;
+    }
+
+    int getSalidas() const {
+        return Salidas;
+    }
+};
+
+class Lacteo : public Producto {
+private:
+    std::string FechaCaducidad;
+
+public:
+    Lacteo() {
+        FechaCaducidad = "";
+    }
+
+    void SetFechaCaducidad(const std::string& Fecha) {
+        FechaCaducidad = Fecha;
+    }
+
+    std::string getFechaCaducidad() const {
+        return FechaCaducidad;
+    }
+};
+
+int main() {
+    // Crear objeto de la subclase Lacteos
+    Lacteo lacteo1;
+    lacteo1.setDescripcion("leche");
+    lacteo1.setCodigoProducto(45630);
+    lacteo1.setExistenciasMes(100);
+    lacteo1.setEntradas(20);
+    lacteo1.setSalidas(30);
+    lacteo1.SetFechaCaducidad("11-10-2023");
+
+    // Acceso a los atributos
+    std::cout << "Descripción del producto: " << lacteo1.getDescripcion() << std::endl;
+    std::cout << "Código del producto: " << lacteo1.getCodigoProducto() << std::endl;
+    std::cout << "Existencias del mes anterior: " << lacteo1.getExistenciasMes() << std::endl;
+    std::cout << "Entradas: " << lacteo1.getEntradas() << std::endl;
+    std::cout << "Salidas: " << lacteo1.getSalidas() << std::endl;
+    std::cout << "Fecha de Caducidad: " << lacteo1.getFechaCaducidad() << std::endl;
+
+    return 0;
+}
