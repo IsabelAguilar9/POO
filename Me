@@ -1,0 +1,62 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+class Producto
+{
+  private:
+	string Descripcion;
+	int CodigoProducto;
+	int ExistenciasMes;
+	int Entradas;
+	int Salidas;
+
+  public:
+	//Atributos de la clase producto
+	Producto(string, int, int, int, int);
+	void mostrarProducto();
+};
+class Lacteo : public Producto
+{
+  private:
+	string FechaCaducidad;
+
+  public:
+	Lacteo(string, int, int, int, int, string);
+	void mostrarLacteo();
+};
+Lacteo::Lacteo(string nombre, int producto, int existenciasMes, int entradas, int salidas, string fecha) : Producto(nombre, producto, existenciasMes, entradas, salidas)
+{
+	FechaCaducidad = fecha;
+}
+
+Producto::Producto(string nombre, int producto, int existenciasMes, int entradas, int salidas)
+{
+	Descripcion = nombre;
+	CodigoProducto = producto;
+	ExistenciasMes = existenciasMes;
+	Entradas = entradas;
+	Salidas = salidas;
+}
+
+void Producto::mostrarProducto()
+{
+	cout << "Descripcion: " << Descripcion << endl;
+	cout << "Codigo del Producto: " << CodigoProducto << endl;
+	cout << "Existencias del mes del mes anterior: " << ExistenciasMes << endl;
+	cout << "Entradas: " << Entradas << endl;
+	cout << "Salidas: " << Salidas << endl;
+}
+void Lacteo::mostrarLacteo()
+{
+	mostrarProducto();
+	cout << "Fecha de Caducidad: " << FechaCaducidad << endl;
+}
+
+int main()
+{
+	//crear objeto de la subclase Lacteos
+	Lacteo lacteo1("Leche", 34, 45630, 20, 30, "11-10-2023");
+	lacteo1.mostrarLacteo();
+	return 0;
+}
